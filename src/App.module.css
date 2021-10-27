@@ -1,9 +1,7 @@
 .container {
   margin: 20px auto;
-  width: 400px;
+  width: 90%;
   padding: 10px;
-
-  text-align: center;
 
   background: rgba(255, 255, 255, 0.507);
   border: 1px solid transparent;
