@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import OnLoader from '../components/OnLoader/OnLoader';
 import { getMovieTrends } from '../components/Services/getMovieApi';
 
+import OnLoader from '../components/OnLoader/OnLoader';
 import MovieList from '../components/MovieList/MovieList';
 
 const HomePage = () => {
@@ -12,6 +12,7 @@ const HomePage = () => {
 
   useEffect(() => {
     setIsLoading(true);
+
     getMovieTrends()
       .then((response) => {
         setFilms(response.data.results);
@@ -20,14 +21,13 @@ const HomePage = () => {
       .catch((error) => {
         setOnError(error.message);
         onError && alert(`${onError}`);
-      })
-      .finally(() => setIsLoading(false));
+      });
   }, [onError]);
 
   return (
     <>
       {isLoading && <OnLoader />}
-      <MovieList films={films} title="Popular movies are:" />
+      <MovieList films={films} title="Trending today" />
     </>
   );
 };

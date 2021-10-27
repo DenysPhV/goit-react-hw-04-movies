@@ -8,7 +8,7 @@ const CastSection = ({ match }) => {
   const [onError, setOnError] = useState(null);
 
   useEffect(() => {
-    isLoading(true);
+    setIsLoading(true);
     const { movieId } = match.params;
     getMovieCastId(movieId)
       .then((response) => setCast(response.data.cast))

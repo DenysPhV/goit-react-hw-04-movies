@@ -1,9 +1,12 @@
 import React, { lazy, useState, useEffect, Suspense } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
+import { getMovieDetailId } from '../components/Services/getMovieApi';
 import routes from '../components/Services/routes';
 import contextProps from '../components/Services/context';
-import { getMovieDetailId } from '../components/Services/getMovieApi';
+import OnLoader from '../components/OnLoader/OnLoader';
+import MovieCard from '../components/MovieCard/MovieCard';
+import MoviePageBar from '../components/MoviePageBar/MoviePageBar';
 
 const CastSection = lazy(() =>
   import(
@@ -38,7 +41,9 @@ const MovieDetailPage = ({ match }) => {
 
   useEffect(() => {
     const { movieId } = match.params;
+
     setState((prev) => ({ ...prev, isLoading: true }));
+
     getMovieDetailId(movieId)
       .then((response) =>
         setState((prev) => ({
@@ -61,10 +66,14 @@ const MovieDetailPage = ({ match }) => {
   return (
     <contextProps.Provider value={{ ...state, handleGoBack }}>
       <>
-        {state.isLoading}
+        {state.isLoading && <OnLoader />}
         {poster_path ? (
           <>
-            <Suspense>
+            <div>
+              <MovieCard />
+              <MoviePageBar />
+            </div>
+            <Suspense fallback={<OnLoader />}>
               <Switch>
                 <Route
                   exact

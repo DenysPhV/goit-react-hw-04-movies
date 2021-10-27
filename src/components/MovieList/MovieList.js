@@ -32,6 +32,7 @@ const MovieList = ({ films, title }) => {
                   src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                   alt={title}
                   title={title}
+                  className={s.FilmList_img}
                 />
               </Link>
             </li>
