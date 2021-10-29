@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 // import { makeSlug } from '../Services/slug';
 import s from './MovieList.module.css';
 
-const MovieList = ({ films, title }) => {
+const MovieList = ({ films, title, name }) => {
   const history = useHistory();
   const [, setMovies] = useState();
 
@@ -16,9 +16,10 @@ const MovieList = ({ films, title }) => {
   return (
     <>
       <h2>{title}</h2>
+
       <ul className={s.FilmList}>
         {films &&
-          films.map(({ id, poster_path, title, name }) => (
+          films.map(({ id, title }) => (
             <li key={id} className={s.FilmListItem}>
               <Link
                 to={{
@@ -29,12 +30,7 @@ const MovieList = ({ films, title }) => {
                   },
                 }}
               >
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                  alt={title}
-                  title={title}
-                  className={s.FilmListImg}
-                />
+                <p title={title}>{title}</p>
               </Link>
             </li>
           ))}

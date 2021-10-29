@@ -60,6 +60,8 @@ const MovieSearch = () => {
       .finally(() => setIsLoading(false));
   };
 
+  console.log(setMovies);
+
   return (
     <>
       <SearchFormMovies
@@ -68,7 +70,8 @@ const MovieSearch = () => {
         handleChange={handleChange}
       />
       {isLoading && <OnLoader />}
-      <MovieList films={movies} />
+
+      <MovieList films={movies} setMovies={setMovies} />
     </>
   );
 };
