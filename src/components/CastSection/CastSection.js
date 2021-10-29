@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import OnLoader from '../OnLoader/OnLoader';
 
 import { getMovieCastId } from '../Services/getMovieApi';
+
+import s from './CastSection.module.css';
 
 const CastSection = ({ match }) => {
   const [cast, setCast] = useState([]);
@@ -22,24 +25,29 @@ const CastSection = ({ match }) => {
 
   return (
     <>
-      {isLoading}
-      <div>
-        {cast.length > 0 ? (
-          cast.map(({ cast_id, character, name, profile_path }) => (
-            <li key={cast_id}>
-              {profile_path && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${profile_path}`}
-                  alt={name}
-                />
-              )}
-              <h3>{name}</h3>
-              <p>Character: {character}</p>
-            </li>
-          ))
-        ) : (
-          <p>We don't have any reviews for this movie.</p>
-        )}
+      {isLoading && <OnLoader />}
+      <div className={s.Container}>
+        <ul className={s.CastList}>
+          {cast.length > 0 ? (
+            cast.map(({ cast_id, character, name, profile_path }) => (
+              <li key={cast_id} className={s.CastItem}>
+                {profile_path && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+                    alt={name}
+                    className={s.CastImg}
+                  />
+                )}
+                <div className={s.ContainerItem}>
+                  <h3 className={s.CastTitle}>{name}</h3>
+                  <p className={s.CastDesc}>Character: {character}</p>
+                </div>
+              </li>
+            ))
+          ) : (
+            <p>We don't have any reviews for this movie.</p>
+          )}
+        </ul>
       </div>
     </>
   );

@@ -4,9 +4,10 @@ import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import { getMovieDetailId } from '../components/Services/getMovieApi';
 import routes from '../components/Services/routes';
 import contextProps from '../components/Services/context';
+
 import OnLoader from '../components/OnLoader/OnLoader';
 import MovieCard from '../components/MovieCard/MovieCard';
-import MoviePageBar from '../components/MoviePageBar/MoviePageBar';
+import MoviePageBar from '../components/MovieBar/MovieBar';
 
 const CastSection = lazy(() =>
   import(
@@ -23,7 +24,7 @@ const MovieDetailPage = ({ match }) => {
   const location = useLocation();
   const history = useHistory();
 
-  const initialState = {
+  const ATTRIBUTES = {
     isLoading: false,
     poster_path: null,
     vote_average: null,
@@ -33,7 +34,7 @@ const MovieDetailPage = ({ match }) => {
     release_date: null,
   };
 
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(ATTRIBUTES);
 
   const handleGoBack = () => {
     history.push(location?.state?.from || routes.home);

@@ -1,0 +1,57 @@
+.Container {
+  position: relative;
+}
+
+.Card {
+  display: flex;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.BtnGoBack {
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  top: 25px;
+  right: 0;
+
+  width: 120px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  border: none;
+  border-radius: 4px;
+  background-color: #d4cfcf;
+
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.BtnGoBack:hover,
+.BtnGoBack:focus {
+  color: #ffffff;
+}
+
+/* .ImgContainer {
+  width: 500px;
+  border: 2px solid #504f4f;
+
+  object-fit: cover;
+
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+} */
+
+.Poster {
+  width: 350px;
+
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.Description {
+  margin-left: 25px;
+}

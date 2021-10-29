@@ -1,3 +1,17 @@
+.MovieBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 80px;
+
+  padding-left: 30px;
+  padding-right: 30px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
 .NavLinkList {
   display: flex;
 
@@ -21,7 +35,7 @@
 
 .NavLink:hover,
 .NavLink:focus {
-  text-decoration-line: underline;
+  color: orangered;
 }
 
 .NavLinkActive {

@@ -1,17 +1,22 @@
 import PropTypes from 'prop-types';
+
+import s from './SearchFormMovies.module.css';
 const SearchFormMovies = ({ handleSubmit, query, handleChange }) => {
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={s.form}>
         <label>
           <input
             type="text"
             placeholder="typing movie title..."
             value={query}
             onChange={handleChange}
+            className={s.input}
           />
         </label>
-        <button type="submit">Search</button>
+        <button type="submit" className={s.button}>
+          Search
+        </button>
       </form>
     </>
   );

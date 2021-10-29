@@ -4,8 +4,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import s from './App.module.css';
 import routes from './components/Services/routes';
 
-import Navigation from './components/Navigation/Navigation';
 import OnLoader from './components/OnLoader/OnLoader';
+import AppBar from './components/AppBar/AppBar';
 
 const HomePage = lazy(() =>
   import('./pages/HomePage' /*webpackChunkName: "home-page"*/),
@@ -22,7 +22,7 @@ const MovieDetailsPage = lazy(() =>
 const App = () => {
   return (
     <div className={s.container}>
-      <Navigation />
+      <AppBar />
       <Suspense fallback={<OnLoader />}>
         <Switch>
           <Route exact path={routes.home} component={HomePage} />

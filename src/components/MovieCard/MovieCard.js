@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
+import { BsArrowLeftShort } from 'react-icons/bs';
 
 import contextProps from '../Services/context';
+
+import s from './MovieCard.module.css';
 
 const MovieCard = () => {
   const {
@@ -14,17 +17,17 @@ const MovieCard = () => {
   } = useContext(contextProps);
 
   return (
-    <div>
-      <button type="button" onClick={handleGoBack}>
-        {/* <BsArrowLeftShort size="2em" /> */}
+    <div className={s.Container}>
+      <button type="button" onClick={handleGoBack} className={s.BtnGoBack}>
+        <BsArrowLeftShort size="2em" />
         Go back
       </button>
 
-      <div>
-        <div>
-          <img src={poster_path} alt={title} />
+      <div className={s.Card}>
+        <div className={s.ImgContainer}>
+          <img src={poster_path} alt={title} className={s.Poster} />
         </div>
-        <div>
+        <div className={s.Description}>
           <h2>{`${title} (${release_date})`}</h2>
           <p>User Score: {vote_average * 10}%</p>
           <h3>Overview</h3>

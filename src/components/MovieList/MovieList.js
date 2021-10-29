@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+// import { makeSlug } from '../Services/slug';
 import s from './MovieList.module.css';
 
 const MovieList = ({ films, title }) => {
@@ -17,8 +18,8 @@ const MovieList = ({ films, title }) => {
       <h2>{title}</h2>
       <ul className={s.FilmList}>
         {films &&
-          films.map(({ id, poster_path, title }) => (
-            <li key={id} className={s.FilmList_Item}>
+          films.map(({ id, poster_path, title, name }) => (
+            <li key={id} className={s.FilmListItem}>
               <Link
                 to={{
                   pathname: `/movies/${id}`,
@@ -32,7 +33,7 @@ const MovieList = ({ films, title }) => {
                   src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                   alt={title}
                   title={title}
-                  className={s.FilmList_img}
+                  className={s.FilmListImg}
                 />
               </Link>
             </li>

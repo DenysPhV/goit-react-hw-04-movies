@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { getMovieReviewId } from '../Services/getMovieApi';
 
+import s from './ReviewsSection.module.css';
+
 const ReviewsSection = ({ match }) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +12,7 @@ const ReviewsSection = ({ match }) => {
   useEffect(() => {
     const { movieId } = match.params;
     setIsLoading(true);
+
     getMovieReviewId(movieId)
       .then((response) => setReviews(response.data.results))
       .catch((error) => {
@@ -20,10 +23,10 @@ const ReviewsSection = ({ match }) => {
   }, [match.params, onError]);
 
   return (
-    <div>
+    <div className={s.Container}>
       {isLoading}
       {reviews.length > 0 ? (
-        <ul>
+        <ul className={s.ReviewsList}>
           {reviews.map(({ author, content, id }) => (
             <li key={id}>
               <h3>Author: {author}</h3>
