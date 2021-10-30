@@ -1,5 +1,5 @@
 import React, { lazy, useState, useEffect, Suspense } from 'react';
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { getMovieDetailId } from '../components/Services/getMovieApi';
 import routes from '../components/Services/routes';
@@ -20,10 +20,7 @@ const ReviewsSection = lazy(() =>
   ),
 );
 
-const MovieDetailPage = ({ match }) => {
-  const location = useLocation();
-  const history = useHistory();
-
+const MovieDetailPage = ({ match, location, history }) => {
   const ATTRIBUTES = {
     isLoading: false,
     poster_path: null,

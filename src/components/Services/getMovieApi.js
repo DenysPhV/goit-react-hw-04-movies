@@ -54,13 +54,3 @@ export {
   getMovieCastId,
   getMovieReviewId,
 };
-
-// export async function getMovieCast(id) {
-//   const response = await fetchMovie(`/movie/${id}/credits`);
-//   return response.cast;
-// }
-
-// export async function getMovieReview(id) {
-//   const response = await fetchMovie(`/movie/${id}/reviews`);
-//   return response.results;
-// }

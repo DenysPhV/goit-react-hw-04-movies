@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+// import { useHistory, useLocation } from 'react-router-dom';
 
 import OnLoader from '../components/OnLoader/OnLoader';
 import { getMovieSearch } from '../components/Services/getMovieApi';
 import MovieList from '../components/MovieList/MovieList';
 import SearchFormMovies from '../components/SearchFormMovies/SearchFormMovies';
 
-const MovieSearch = () => {
-  const location = useLocation();
-  const history = useHistory();
-
+const MovieSearch = ({ history, location }) => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -60,8 +57,6 @@ const MovieSearch = () => {
       .finally(() => setIsLoading(false));
   };
 
-  console.log(setMovies);
-
   return (
     <>
       <SearchFormMovies
@@ -71,7 +66,7 @@ const MovieSearch = () => {
       />
       {isLoading && <OnLoader />}
 
-      <MovieList films={movies} setMovies={setMovies} />
+      <MovieList films={movies} />
     </>
   );
 };
